@@ -8,14 +8,15 @@
 sab :: [Int] -> [Int]
 sab [] = []
 sab [x] = [x]
-sab (x:xs) = [x] ++ (x:xs)
+sab (x:y:xs) = y:x:xs
 
 sc :: [Int] -> [Int] -> ([Int], [Int])
 sc (x:xs) (y:ys) = (sab (x:xs), sab (y:ys))
 
 pab :: [Int] -> [Int] -> ([Int], [Int])
-pab [] ys = ([], ys)
-pab (x:xs) (y:ys) = (xs, [x] ++ (y:ys)) 
+pab [] y = ([], y)
+pab (x:xs) [] = (xs, [x])
+pab (x:xs) (y:ys) = (xs, x : (y:ys))
 
 rab :: [Int] -> [Int]
 rab [] = []
