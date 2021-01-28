@@ -18,7 +18,7 @@ all:
 	ghc -o $(NAME) $(SRC)
 
 clean:
-	rm -f $(OBJ) $(OBJ2)
+	rm -f $(OBJ) $(OBJ2) Operation.hi Operation.o
 
 fclean:	clean
 	rm -f $(NAME)

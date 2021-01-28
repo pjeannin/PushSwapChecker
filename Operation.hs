@@ -5,6 +5,8 @@
 -- Operation
 --
 
+module Operation where
+
 sab :: [Int] -> [Int]
 sab [] = []
 sab [x] = [x]
