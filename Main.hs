@@ -7,6 +7,7 @@
 
 import System.Environment
 import Data.Maybe
+import Data.List
 
 containOnlyInt :: [Char] -> Bool
 containOnlyInt [] = False
@@ -60,6 +61,12 @@ checkOperation (x:xs)
         | isValidoperation x == Nothing = Nothing
         | checkOperation xs == Nothing = Nothing
         | otherwise = Just (fromJust (isValidoperation x) : fromJust (checkOperation xs))
+
+
+splitStringOnSpace :: String -> [String]
+splitStringOnSpace (x:xs)
+        | (elemIndex ' ' (x:xs)) == Nothing = [(x:xs)]
+        | otherwise = fst (splitAt (fromJust (elemIndex ' ' (x:xs))) (x:xs)) : splitStringOnSpace (tail (snd (splitAt (fromJust (elemIndex ' ' (x:xs))) (x:xs))))
 
 main = do
         args <- getArgs
