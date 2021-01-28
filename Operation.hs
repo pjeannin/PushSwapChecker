@@ -5,6 +5,18 @@
 -- Operation
 --
 
+sab :: [Int] -> [Int]
+sab [] = []
+sab [x] = [x]
+sab (x:xs) = [x] ++ (x:xs)
+
+sc :: [Int] -> [Int] -> ([Int], [Int])
+sc (x:xs) (y:ys) = (sab (x:xs), sab (y:ys))
+
+pab :: [Int] -> [Int] -> ([Int], [Int])
+pab [] ys = ([], ys)
+pab (x:xs) (y:ys) = (xs, [x] ++ (y:ys)) 
+
 rab :: [Int] -> [Int]
 rab [] = []
 rab [x] = [x]
