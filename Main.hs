@@ -2,8 +2,11 @@
 -- EPITECH PROJECT, 2021
 -- B3 - Func. Prog. Seminar
 -- File description:
--- Main
+-- Op
 --
 
-main = do x <- getArgs
-        print x
+import System.Environment
+
+main = do
+    args <- getArgs
+    print args
