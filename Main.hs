@@ -37,6 +37,30 @@ checkArgs (x:xs)
         | checkArgs xs == Nothing = Nothing
         | otherwise = Just (fromJust (readInt x) : fromJust (checkArgs xs))
 
+isValidoperation :: String -> Maybe String
+isValidoperation "sa" = Just "sa"
+isValidoperation "sb" = Just "sb"
+isValidoperation "sc" = Just "sc"
+isValidoperation "pa" = Just "pa"
+isValidoperation "pb" = Just "pb"
+isValidoperation "ra" = Just "ra"
+isValidoperation "rb" = Just "rb"
+isValidoperation "rr" = Just "rr"
+isValidoperation "rra" = Just "rra"
+isValidoperation "rrb" = Just "rrb"
+isValidoperation "rrr" = Just "rrr"
+isValidoperation x = Nothing
+
+checkOperation :: [String] -> Maybe [String]
+checkOperation [] = Nothing
+checkOperation [x]
+        | isValidoperation x == Nothing = Nothing
+        | otherwise = Just [fromJust (isValidoperation x)]
+checkOperation (x:xs)
+        | isValidoperation x == Nothing = Nothing
+        | checkOperation xs == Nothing = Nothing
+        | otherwise = Just (fromJust (isValidoperation x) : fromJust (checkOperation xs))
+
 main = do
-        args <- checkArgs getArgs
+        args <- getArgs
         print args
